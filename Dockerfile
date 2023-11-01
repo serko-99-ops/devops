@@ -1,10 +1,12 @@
-FROM ubuntu:22.04 
-RUN apt-get update
-RUN apt-get install -y nginx zip curl
-RUN echo "daemon off;" »/etc/nginx/nginx.conf
-RUN curl -o /var/www/html/master.zip –L https://codeload.qithub.com/qabrielecirulli/2048/zip/master
-RUN cd /var/www/html/ && unzip master.zip && mv 2048-master/* . && rm -rf 2048-master master.zip
-
-EXPOSE 80
-
-CMD ["/usr/sbin/nginx", /etc/nginx/nginx.conf"]
+FROM node:lts-alpine
+WORKDIR /usr/src/app
+COPY curriculum-front/package*.json ./
+RUN ls -l
+RUN npm install
+COPY curriculum-front ./
+RUN ls -l
+RUN npm run build
+COPY curriculum-front/nodeServer.js dist/nodeServer.js
+WORKDIR /usr/src/app/dist
+EXPOSE 8080
+CMD [ "node", "nodeServer.js" ]
