@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('log') {
           steps {
-            sh 'ls -la'
+            sh 'cd curriculum-front && npm i && npm test:unit'
           }
         }
 
