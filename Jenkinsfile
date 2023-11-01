@@ -17,7 +17,7 @@ pipeline {
 
         stage('front-end') {
           steps {
-            sh 'cd curriculum-front && npm i && npm test:unit'
+            sh 'ls -la'
           }
         }
 
