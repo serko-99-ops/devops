@@ -7,9 +7,20 @@ pipeline {
       }
     }
 
-    stage('') {
-      steps {
-        sh 'ls -la'
+    stage('error') {
+      parallel {
+        stage('error') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('front-end') {
+          steps {
+            sh 'cd curriculum-front && npm i && npm test:unit'
+          }
+        }
+
       }
     }
 
