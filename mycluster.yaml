@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------
 # Manifest File to create AWS EKS Cluster in Custom VPC
 #
-# eksctl create cluster -f eks-cluster.yaml
-# eksctl delete cluster -f eks-cluster.yaml
+# eksctl create cluster -f mycluster.yaml
+# eksctl delete cluster -f mycluster.yaml
 #
 #
 #---------------------------------------------------------------------
